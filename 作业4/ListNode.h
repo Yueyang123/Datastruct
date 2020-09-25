@@ -19,6 +19,12 @@ public:
         this->data =data;
         next=0;
     }
+
+     ListNode(ListNode* node)
+    {
+        this->data =node->data;
+        next=node->next;
+    }
     
 };
 
