@@ -1,4 +1,4 @@
-
+# (一)常用命令
 # 安装完Git后第一件要做的事，设置用户信息(global可换成local在单独项目生效)：
 git config --global user.name "用户名" # 设置用户名
 git config --global user.email "用户邮箱"   #设置邮箱
@@ -37,7 +37,8 @@ git add -i # 进入交互界面模式，按需添加文件到缓存区
 
 
 
-5.让Git不Tracked特定文件【.gitignore文件配置】
+5.让Git不Tracked特定文件
+# 【.gitignore文件配置】
 
 将未tracked的文件添加到缓存区后，Git就会开始跟踪这个文件了！
 对于一些比如：自动生成的文件，日志，临时编译文件等，就
@@ -209,7 +210,9 @@ git push origin --delete tag 标记内容
 
 
 13.Git命令自动补全【输命令的时候按两次tab键】
-文件回复/版本回退
+
+
+# （二）文件回复/版本回退
 1.文件恢复(未commit)【git checkout】
 
 如果在工作区直接删除被Git Tracked的文件，暂存区中还会存在该文件，
@@ -525,20 +528,14 @@ git stash apply stash@{1}
 
 git branch -m 老分支名 新分支名 # 分支重命名
 
-    1
 
-远程仓库与远程分支
-1.远程仓库简述
-
-用于代码托管，可以自己搭建远程仓库，或者选择专业的代码托管平台：
-自己搭建的好处有：可控，内网安全，可以做一些定制，比如集成编译，IM等，
-当然，肯定是需要一些学习成本的，(PS：我厂就是自己搭的Gitlab，自己配置
-还是比较麻烦的，简单点的可以试试 Gogs)
-
+# （三）远程仓库与远程分支
+## 1.远程仓库简述
 常见的代码托管平台(自己搜关键字去~)：
 
 Github，Git@OSC，GitCafe，GitLab，coding.net，gitc，BitBucket，Geakit，Douban CODE
-2.推送本地仓库到远程仓库【git push】
+
+## 2.推送本地仓库到远程仓库【git push】
 
 首先建立好与本地仓库同名的远程仓库，然后复制下远程仓库的地址，比如：
 
@@ -546,9 +543,9 @@ Github，Git@OSC，GitCafe，GitLab，coding.net，gitc，BitBucket，Geakit，D
 
 git remote add origin 远程仓库地址 
 
-    1
 
 可以键入下述命令可查看远程仓库状况
+git remote -v
 
 接着把本地仓库推送到远程仓库，这里的 -u参数 作为第一次提交使用，
 作用是把本地master分支和远程master分支关联起来(设置默认远程主机)，
@@ -556,7 +553,6 @@ git remote add origin 远程仓库地址
 
 git push -u origin master
 
-    1
 
 另外，如果想修改远程仓库地址，可键入：
 
@@ -567,35 +563,23 @@ git remote set-url origin 远程仓库地址
 git remote rm origin    # 删除仓库关联
 git remote add origin 远程仓库地址 # 添加仓库关联
 
-    1
-    2
-    3
-    4
-    5
-    6
 
 或直接修改.git文件夹中的config文件，直接替换圈住位置
-
 还要说明一点，origin 并不是固定的东西，只是后面仓库地址的一个 别名！！
 可以写成其他的东西，然后你也可以设置多个仓库关联，用不同的别名标志，比如：
 
 git remote add github https://github.com/coder-pig/SimpleTea.git
 git remote add osc git@git.oschina.net:coder-pig/SimpleTea.git
 
-    1
-    2
-
-3.克隆远程仓库【git clone】
+# 3.克隆远程仓库【git clone】
 
 把项目推送到远程仓库后，其他开发者就可以把项目clone到本地
 
 git clone 仓库地址 # 克隆项目到当前文件夹下
 git clone 仓库地址 目录名 # 克隆项目到特定目录下
 
-    1
-    2
 
-4.同步远程仓库更新【git fetch】VS 【git pull】
+# 4.同步远程仓库更新【git fetch】VS 【git pull】
 
 关于获取远程服务器更新的方式有两种，他们分别是fetch和pull，
 尽管都可以获取远程服务器更新，但是两者却又是不一样的。
@@ -614,41 +598,35 @@ README.md 文件，然后git pull 同步远程仓库的更新
 
 区别显而易见，实际开发中，使用git fetch会更安全一些，毕竟merge的时候
 我们可以查看更新的情况，再决定是否进行合并，当然看实际需要吧！
-5.推送本地分支到远程仓库
+# 5.推送本地分支到远程仓库
 
 按照前面所讲，在本地开辟分支来完成某些工作，本地提交了多次后，
 你想把分支推送到远程仓库，此时远程仓库并没有这个分支，你可以：
 
 git push origin 分支名 # 推送本地分支的内容到远程分支
 
-    1
 
-6.查看远程分支
+# 6.查看远程分支
 
 git branch -r # 查看所有分支
 
-    1
 
-7.拉取远程分支到本地仓库
+# 7.拉取远程分支到本地仓库
 
 git checkout -b 本地分支 远程分支 # 会在本地新建分支，并自动切换到该分支
 git fetch origin 远程分支:本地分支 # 会在本地新建分支，但不会自动切换，还需checkout
 git branch --set-upstream 本地分支 远程分支 # 建立本地分支与远程分支的链接
 
-    1
-    2
-    3
 
-8.删除远程分支
+# 8.删除远程分支
 
 git push origin :分支名 
 
-    1
 
-9.重命名远程分支
+# 9.重命名远程分支
 
 先删除远程分支，然后重命名本地分支，接着再Push到远程仓库
-10.为项目添加SSH Key免去提交输入账号密码的麻烦
+# 10.为项目添加SSH Key免去提交输入账号密码的麻烦
 
 不知道细心的你有没有发现，仓库地址除了Https外，还有一个SSH，
 这里我们简单介绍下两者的区别，第一点：使用Https url可以任意克隆
@@ -680,8 +658,6 @@ Github账号的ssh keys中，这样就建立了本地和远程的认证关系，
 我们接着可以用编辑器打开id_rsa.pub文件或者键入:
 
 clip <id_rsa.pub
-
-    1
 
 复制文件内容，然后打开Github，点击你的头像，选择：Settings，
 然后点击左侧SSH Keys,然后New SSH Key
