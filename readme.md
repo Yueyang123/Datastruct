@@ -745,7 +745,7 @@ Git工作流
         3.小A和小B完成各自的工作
         4.小A先完成了，git push origin master 把代码推送到远程仓库
         5.小B后完成了，此时推送代码到远程仓库，出现文件修改冲突
-        6.小B需要先解决冲突，git pull –rebase origin master，然后rebase慢慢玩
+        #6.小B需要先解决冲突，git pull –rebase origin master，然后rebase慢慢玩
         7.小B把冲突解决后，git push origin master 把代码推送到远程仓库
 
 ## 2.功能分支工作流
