@@ -22,5 +22,55 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "typeinfo": "cpp"
-    }
+    },
+
+    "code-runner.executorMap": {
+        "cpp": "cd $dir && g++ -g ./*.cpp -fpermissive -I ./include/ -L ./lib/lib* -o test && ./test -static"
+        },
+        "code-runner.respectShebang": false,
+        "code-runner.runInTerminal": true ,
+    
+
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.colorTheme": "Tomorrow Night Blue",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+
+        // 文件头部注释
+        "fileheader.customMade": {
+            "Descripttion": "",
+            "version": "",
+            "Author": "Yueyang",
+            "email": "1700695611@qq.com",
+            "Date": "Do not edit",
+            "LastEditors": "Yueyang",
+            "LastEditTime": "Do not Edit"
+        },
+        //函数注释
+        "fileheader.cursorMode": {
+            "name": "",
+            "msg": "",
+            "param": "",
+            "return": ""
+        },
+
+    "java.semanticHighlighting.enabled": true,
+    "java.requirements.JDK11Warning": false,
+    "editor.codeActionsOnSave": null,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "python.experiments.optOutFrom": [
+    
+    ],
+    "git.enableSmartCommit": true,
+    "C_Cpp.updateChannel": "Insiders",
+    "git.autofetch": true,
+    "java.templates.fileHeader": [
+    
+    ]
 }

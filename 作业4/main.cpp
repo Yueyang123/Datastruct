@@ -1,6 +1,22 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: Yueyang
+ * @email: 1700695611@qq.com
+ * @Date: 2020-09-17 13:38:36
+ * @LastEditors: Yueyang
+ * @LastEditTime: 2020-09-26 19:47:03
+ */
 #include "ListNode.h"
 #include "List.h"
 #include <iostream>
+
+/**
+ * @name: 
+ * @msg: 
+ * @param {type} 
+ * @return {type} 
+ */
 
 int main()
 {
