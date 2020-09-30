@@ -802,3 +802,5 @@ feature分支：a -> b
 pull的时候就报这个错了，解决方法如下：
 
 git pull origin master --allow-unrelated-histories
+
+#origin
