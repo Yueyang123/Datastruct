@@ -1,11 +1,13 @@
+#GIT使用总结
+
 # (一)常用命令
-# 安装完Git后第一件要做的事，设置用户信息(global可换成local在单独项目生效)：
+## 1.安装完Git后第一件要做的事，设置用户信息(global可换成local在单独项目生效)：
 git config --global user.name "用户名" # 设置用户名
 git config --global user.email "用户邮箱"   #设置邮箱
 git config --global user.name   # 查看用户名是否配置成功
 git config --global user.email   # 查看邮箱是否配置
 
-# 其他查看配置相关
+## 其他查看配置相关
 git config --global --list  # 查看全局设置相关参数列表
 git config --local --list # 查看本地设置相关参数列表
 git config --system --list # 查看系统配置参数列表
@@ -13,18 +15,18 @@ git config --list  # 查看所有Git的配置(全局+本地+系统)
 
 
 
-2.获取帮助【git help】
+## 2.获取帮助【git help】
 
 git help 命令   # 如：git help init
 
 
-3.创建本地仓库【git init】
+## 3.创建本地仓库【git init】
 
 git init 仓库名 # 创建一个新的带Git仓库的项目
 git init # 为已存在的项目生成一个Git仓库
 
 
-4.添加文件到暂存区/文件跟踪标记【git add】
+## 4.添加文件到暂存区/文件跟踪标记【git add】
 
 可以使用git add 文件名，将工作空间的文件添加到暂存区，或批量添加文件
 
@@ -37,8 +39,8 @@ git add -i # 进入交互界面模式，按需添加文件到缓存区
 
 
 
-5.让Git不Tracked特定文件
-# 【.gitignore文件配置】
+## 5.让Git不Tracked特定文件
+ 【.gitignore文件配置】
 
 将未tracked的文件添加到缓存区后，Git就会开始跟踪这个文件了！
 对于一些比如：自动生成的文件，日志，临时编译文件等，就
@@ -57,22 +59,22 @@ git add -i # 进入交互界面模式，按需添加文件到缓存区
 
 示例模板：
 
-# 忽略所有以 .c结尾的文件
+##### 忽略所有以 .c结尾的文件
 *.c
 
-# 但是 stream.c 会被git追踪
+##### 但是 stream.c 会被git追踪
 !stream.c
 
-# 只忽略当前文件夹下的TODO文件, 不包括其他文件夹下的TODO例如: subdir/TODO
+##### 只忽略当前文件夹下的TODO文件, 不包括其他文件夹下的TODO例如: subdir/TODO
 /TODO
 
-# 忽略所有在build文件夹下的文件
+##### 忽略所有在build文件夹下的文件
 build/
 
-# 忽略 doc/notes.txt, 但不包括多层下.txt例如: doc/server/arch.txt
+##### 忽略 doc/notes.txt, 但不包括多层下.txt例如: doc/server/arch.txt
 doc/*.txt
 
-# 忽略所有在doc目录下的.pdf文件
+##### 忽略所有在doc目录下的.pdf文件
 doc/**/*.pdf
 
 ！！！特别要注意一点！！！：
@@ -99,7 +101,7 @@ git rm -r --cached . # 清除版本控制标记，.代表所有文件，也可�
 
 还有，如果你用的是IDEA的编辑器的话，可以下一个.ignore的插件，可以手动
 直接勾选不需要跟踪的文件。
-6.将暂存区内容提交到本地仓库【git commit】
+## 6.将暂存区内容提交到本地仓库【git commit】
 
 git commit -m "提交说明" # 将暂存区内容提交到本地仓库
 git commit -a -m "提交说明" # 跳过缓存区操作，直接把工作区内容提交到本地仓库
@@ -113,23 +115,23 @@ git config --global core.edit 喜欢的编辑器
 
 除此之外，有时可能需要修改上次提交的内容，比如修改提交说明，或者修改文件等：
 
-# 合并暂存区和最近的一次commit，生成新的commit并替换掉老的
-# 如果缓存区没内容，利用amend可以修改上次commit的提交说明
-# 注：因为amend后生成的commit是一个全新的commit，旧的会被
-# 删除，所以别在公共的commit上使用amend！切记！！！
+###### 合并暂存区和最近的一次commit，生成新的commit并替换掉老的
+###### 如果缓存区没内容，利用amend可以修改上次commit的提交说明
+###### 注：因为amend后生成的commit是一个全新的commit，旧的会被
+###### 删除，所以别在公共的commit上使用amend！切记！！！
 
 git commit --amend 
 git commit --amend --no-edit # 沿用上次commit的提交说明
 
 
-7.查看工作区与缓存区的状态【git status】
+## 7.查看工作区与缓存区的状态【git status】
 
 git status # 查看工作区与暂存区的当前情况
 git status -s # 让结果以更简短的形式输出
 
 
 
-8.差异对比(内容变化)【git diff】
+## 8.差异对比(内容变化)【git diff】
 
 git diff # 工作区与缓存区的差异
 git diff 分支名 #工作区与某分支的差异，远程分支这样写：remotes/origin/分支名
@@ -140,11 +142,11 @@ git diff 版本TAG # 查看从某个版本后都改动内容
 git diff 分支A 分支B # 比较从分支A和分支B的差异(也支持比较两个TAG)
 git diff 分支A...分支B # 比较两分支在分开后各自的改动
 
-# 另外：如果只想统计哪些文件被改动，多少行被改动，可以添加 --stat 参数
+###### 另外：如果只想统计哪些文件被改动，多少行被改动，可以添加 --stat 参数
 
 
 
-9.查看历史提交记录【git log】
+## 9.查看历史提交记录【git log】
 
 git log # 查看所有commit记录(SHA-A校验和，作者名称，邮箱，提交时间，提交说明)
 git log -p -次数 # 查看最近多少次的提交记录
@@ -163,7 +165,7 @@ git blame 文件名 # 查看某文件的每一行代码的作者，最新commit�
 
 
 
-12.为重要的commit打标签【git tag】
+## 12.为重要的commit打标签【git tag】
 
 对于某些提交，我们可以为它打上Tag，表示这次提交很重要，
 比如为一些正式发布大版本的commit，打上TAG，当某个版本
@@ -187,7 +189,7 @@ git tag -a 标记内容 版本id # 比如：git tag -a v1.1 bcfed96
 
 git push origin 标记内容 # 推送某标签到
 
-# 删除所有本地仓库中不存在的TAG：
+###### 删除所有本地仓库中不存在的TAG：
 git push origin --tags 
 
 
@@ -209,7 +211,7 @@ git tag -d 标记内容
 git push origin --delete tag 标记内容
 
 
-13.Git命令自动补全【输命令的时候按两次tab键】
+## 13.Git命令自动补全【输命令的时候按两次tab键】
 
 
 # （二）文件回复/版本回退
@@ -220,17 +222,17 @@ git push origin --delete tag 标记内容
 
 Git告诉你工作区的文件被删除了，你可以 删掉暂存区里的文件或 恢复被删文件
 
-# 删除暂存区中的文件：
+#### 删除暂存区中的文件：
 git rm 文件名
 git commit -m "提交说明"
 
-# 误删恢复文件
+#### 误删恢复文件
 git checkout -- 文件名
 
-# 另外注意：git checkout会抛弃当前工作区的更改!!!不可恢复！！！务必小心！！！
+#### 另外注意：git checkout会抛弃当前工作区的更改!!!不可恢复！！！务必小心！！！
 
 
-2.文件恢复(已add未commit)【git reset HEAD】
+## 2.文件恢复(已add未commit)【git reset HEAD】
 
 如果更改后add到了暂存区，想恢复原状，下述指令可以让文件恢复原状：
 
@@ -238,7 +240,7 @@ git reset HEAD 文件名
 git checkout 文件名
 
 
-3.版本回退(已commit)【git reset –hard】
+## 3.版本回退(已commit)【git reset –hard】
 
 文件已经commit了，想恢复成上次commit的版本或者上上次，可以：
 
@@ -260,7 +262,7 @@ reset三个可选参数解析：
         –mixed：修改HEAD指针指向，暂存区内容丢失，工作区不变；
         –hard：修改HEAD指针指向，暂存区内容丢失，工作区恢复以前状态；
 
-4.查看输入指令记录【git reflog】
+## 4.查看输入指令记录【git reflog】
 
 Git会记住你输入的每个Git指令，比如上面的git reset 切换成一个旧的
 commit，然后git log后发现新提交的记录没了，想切换回新的那次commit，
@@ -270,7 +272,7 @@ git reflog
 
 
 注意：这个指令记录不会永久保存！Git会定时清理用不到的对象！！！
-5.撤销某次提交【git revert】
+## 5.撤销某次提交【git revert】
 
 有时可能我们想撤销某次提交所做的更改，可以使用revert命令
 
@@ -283,24 +285,24 @@ git revert 版本号 # 撤销某次commit
 又变回来了，另外，每次revert后，都需要发起新的commit！
 简单点说，撤销的只是文件变化，提交记录依旧是存在的！
 
-6.查看某次提交修改内容【git show】
+## 6.查看某次提交修改内容【git show】
 
 git show 提交id # 查看某次commit的修改内容
 
 
-7.查看某个分支的版本号【git rev-parse】
+## 7.查看某个分支的版本号【git rev-parse】
 
 git rev-parse 分支名 # 查看分支commit的版本号，可以写HEAD
 
-8.找回丢失对象的最后一点希望【git fsck】
+## 8.找回丢失对象的最后一点希望【git fsck】
 
 因为你的某次误操作导致commit丢失，如果git reflog都找不到，你
 可以考虑使用git fsck，找到丢失的对象的版本id，然后恢复即可。
 
 git fsck --lost-found
-
-本地分支
-1.分支概念
+ 
+# (三)本地分支
+## 1.分支概念
 
 提交记录串成的时间线，默认初始创建的分支(时间线) —— master分支，
 如果不切换到其他分支上，每次commit生成的快照都会串在这条分支上！
@@ -314,7 +316,7 @@ git fsck --lost-found
         每次commit，master都会向前移动一步，指向最新的提交
         HEAD则指向正在工作的本地分支，而git reset修改的就是HEAD指针的指向！
 
-2.创建其他分支的原因
+## 2.创建其他分支的原因
 
 通过两个场景来体会创建其他分支的必要性
 
@@ -332,7 +334,7 @@ git fsck --lost-found
         只有一个master分支的话，假如某次提交冲突了，而这个冲突很难解决或者
         解决不了， 那么，那个整个开发就卡住在这里了，无法继续向后进行了！
 
-3.一个最简单实用的分支管理策略
+## 3.一个最简单实用的分支管理策略
 
 为了解决只有一个master分支引起的问题，可以引入分支管理，最简单的一种策略如下：
 
@@ -350,7 +352,7 @@ master与develop分支都作为长期分支，而其他创建的分支作为临�
     又或者是修复bug （fixbug）分支，当完成目的后，把该分支合并到develop分支，
     然后删除 该分支，使得仓库中的常用分支始终只有：master和develop两个长期分支！
 
-4.分支创建与切换【git branch】
+## 4.分支创建与切换【git branch】
 
 git branch 分支名 # 创建分支
 git branch # 查看本地分支
@@ -369,7 +371,7 @@ git checkout master 切回master分支，打开之前修改的文件，发现内
 并没有发生更改，因为刚刚的更改是在develop上提交的，而master上没有
 变化，此时的分支状况如下：
 
-5.分支的合并【git merge】 VS 【git rebase】
+## 5.分支的合并【git merge】 VS 【git rebase】
 
 Git中，可以使用 git merge 和 git rebase 两个命令来进行分支的合并
 
@@ -417,7 +419,7 @@ rebase合并
 
 git rebase 想合并到哪个分支的分支名
 
-6.解决合并冲突
+## 6.解决合并冲突
 
 在我们合并分支的时候，有时会遇到合并冲突，然后合并失败的问题，
 此时需要我们先解决冲突后才能进行合并，个人开发倒很少会遇到，多人
@@ -469,7 +471,7 @@ git rebase --skip # 跳过当前的补丁，处理下一个补丁，不建议使
 最后看下分支线会发现是一条直线，这也是用rebase合并分支的优点：
 
 附上栗子，可以自己试试：GitTest.7z
-7.删除分支
+## 7.删除分支
 
 对于合并完的分支，基本都没什么作用了，可以使用下述命令删除：
 
@@ -477,7 +479,7 @@ git branch -d 分支名 # 删除分支，分支上有未提交更改是不能删
 git branch -D 分支名 # 强行删除分支，尽管这个分支上有未提交的更改
 
 
-8.恢复误删分支
+## 8.恢复误删分支
 
 两步，找出被删除分支的最新commit的版本号，然后恢复分支
 
@@ -485,7 +487,7 @@ git log --branches="被删除的分支名" # 找到被删分支最新的commitb�
 git branch 分支名 版本号(前七位即可) # 恢复被删分支
 
 
-9.切换分支时保存未commit的更改【git stash】
+## 9.切换分支时保存未commit的更改【git stash】
 
 有时我们可能在某个分支上正编写着代码，然后有一些突发的情况，需要
 我们暂时切换到其他分支上，比如要紧急修复bug，或者切换分支给同事
@@ -529,7 +531,7 @@ git stash apply stash@{1}
 git branch -m 老分支名 新分支名 # 分支重命名
 
 
-# （三）远程仓库与远程分支
+# （四）远程仓库与远程分支
 ## 1.远程仓库简述
 常见的代码托管平台(自己搜关键字去~)：
 
@@ -558,7 +560,7 @@ git push -u origin master
 
 git remote set-url origin 远程仓库地址
 
-# 也可以先删除origin后再添加
+## 也可以先删除origin后再添加
 
 git remote rm origin    # 删除仓库关联
 git remote add origin 远程仓库地址 # 添加仓库关联
@@ -571,7 +573,7 @@ git remote add origin 远程仓库地址 # 添加仓库关联
 git remote add github https://github.com/coder-pig/SimpleTea.git
 git remote add osc git@git.oschina.net:coder-pig/SimpleTea.git
 
-# 3.克隆远程仓库【git clone】
+## 3.克隆远程仓库【git clone】
 
 把项目推送到远程仓库后，其他开发者就可以把项目clone到本地
 
@@ -579,7 +581,7 @@ git clone 仓库地址 # 克隆项目到当前文件夹下
 git clone 仓库地址 目录名 # 克隆项目到特定目录下
 
 
-# 4.同步远程仓库更新【git fetch】VS 【git pull】
+## 4.同步远程仓库更新【git fetch】VS 【git pull】
 
 关于获取远程服务器更新的方式有两种，他们分别是fetch和pull，
 尽管都可以获取远程服务器更新，但是两者却又是不一样的。
@@ -598,7 +600,7 @@ README.md 文件，然后git pull 同步远程仓库的更新
 
 区别显而易见，实际开发中，使用git fetch会更安全一些，毕竟merge的时候
 我们可以查看更新的情况，再决定是否进行合并，当然看实际需要吧！
-# 5.推送本地分支到远程仓库
+## 5.推送本地分支到远程仓库
 
 按照前面所讲，在本地开辟分支来完成某些工作，本地提交了多次后，
 你想把分支推送到远程仓库，此时远程仓库并没有这个分支，你可以：
@@ -606,27 +608,27 @@ README.md 文件，然后git pull 同步远程仓库的更新
 git push origin 分支名 # 推送本地分支的内容到远程分支
 
 
-# 6.查看远程分支
+## 6.查看远程分支
 
 git branch -r # 查看所有分支
 
 
-# 7.拉取远程分支到本地仓库
+## 7.拉取远程分支到本地仓库
 
 git checkout -b 本地分支 远程分支 # 会在本地新建分支，并自动切换到该分支
 git fetch origin 远程分支:本地分支 # 会在本地新建分支，但不会自动切换，还需checkout
 git branch --set-upstream 本地分支 远程分支 # 建立本地分支与远程分支的链接
 
 
-# 8.删除远程分支
+## 8.删除远程分支
 
 git push origin :分支名 
 
 
-# 9.重命名远程分支
+## 9.重命名远程分支
 
 先删除远程分支，然后重命名本地分支，接着再Push到远程仓库
-# 10.为项目添加SSH Key免去提交输入账号密码的麻烦
+## 10.为项目添加SSH Key免去提交输入账号密码的麻烦
 
 不知道细心的你有没有发现，仓库地址除了Https外，还有一个SSH，
 这里我们简单介绍下两者的区别，第一点：使用Https url可以任意克隆
@@ -691,8 +693,6 @@ Github给我们提供的一个专门用来管理Github项目的一个工具而�
 
 %SYSTEMROOT%\SYSTEM32\REGSVR32.EXE %SYSTEMROOT%\SYSTEM32\WUAUENG.DLL
 
-    1
-
 然后再点击Github的安装程序，等待安装完成即可，下载并不需梯子。
 附2：删除Git仓库
 
@@ -735,7 +735,7 @@ Git工作流
 
 关于Git工作流，看到一篇图文并茂很好的文章，就不重复造轮子了，
 此处只是做下对应工作流的简述，详情见：Git Workflows and Tutorials
-1.集中式工作流
+## 1.集中式工作流
 
 类似于SVN，不过只有一条master分支，然后一群人就在这条分支上嗨，比如有小A和小B：
 (冲突解决参照上面的套路)
@@ -748,7 +748,7 @@ Git工作流
         6.小B需要先解决冲突，git pull –rebase origin master，然后rebase慢慢玩
         7.小B把冲突解决后，git push origin master 把代码推送到远程仓库
 
-2.功能分支工作流
+## 2.功能分支工作流
 
 和集中式分部流相比只是分支再不是只有master，而是根据功能开辟新的分支而已，示例：
 注：这里的仓库管理者是拥有仓库管理权限的人
@@ -760,16 +760,16 @@ Git工作流
         然后再发起pull request，或者把pull request拉到本地自行修改。
         5.仓库管理员觉得可以了，合并分支到master上，然后把new-feature分支删掉
 
-3.Gitflow工作流
+## 3.Gitflow工作流
 
 其实就是功能分支工作流做了一些规范而已，大概流程参见上面Git分支里的：
 一个最简单实用的分支管理策略。
-4.Forking工作流
+## 4.Forking工作流
 
 分布式工作流，每个开发者都拥有自己独立的仓库，和上面的附3：为开源项目贡献代码
 套路类似，把项目fork到自己的远程仓库，完成相应更改，然后pull request到源仓库，
 源仓库管理者可以决定是否合并。
-5.Pull Request工作流
+## 5.Pull Request工作流
 
 和Forking工作流类似，Pull Requests是Bitbucket上方便开发者之间协作的功能
 查缺补漏
