@@ -383,7 +383,6 @@ git merge合并分支
 
 git merge develop
 
-    1
 
 打开文件：
 
@@ -391,8 +390,6 @@ git merge develop
 注：–no-ff参数表示禁用快速合并！
 
 git merge --no-ff -m "合并的信息(TAG)" develop
-
-    1
 
 分支线情况：
 
@@ -418,7 +415,6 @@ rebase合并
 
 git rebase 想合并到哪个分支的分支名
 
-    1
 
 6.解决合并冲突
 
@@ -454,9 +450,6 @@ git rebase --continue # 处理完冲突后，继续处理下一个补丁
 git rebase --abort # 放弃所有的冲突处理，恢复rebase前的情况
 git rebase --skip # 跳过当前的补丁，处理下一个补丁，不建议使用，补丁部分的commit会丢失！
 
-    1
-    2
-    3
 
 好的，有三次补丁要处理，一个个来：
 
