@@ -1,3 +1,12 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: Yueyang
+ * @email: 1700695611@qq.com
+ * @Date: 2020-09-17 13:11:20
+ * @LastEditors: Yueyang
+ * @LastEditTime: 2020-09-30 15:36:35
+ */
 #ifndef LISTNODE_H
 #define LISTNODE_H
 
@@ -27,6 +36,8 @@ public:
     }
     
 };
+
+
 
 
 
