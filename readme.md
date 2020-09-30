@@ -496,13 +496,11 @@ review代码，此时如果直接切换分支是会提示切换失败的，因�
 
 git stash # 保存当前的改动
 
-    1
 
 然后放心的切换分支，然后再切换回来，接着使用：
 
 git stash apply #　恢复保存改动
 
-    1
 
 另外有一点一定要注意！！！可以stash多个改动！！如果你切换
 到另一个分支又stash了，然后切换回来stash apply是恢复成另一个
@@ -512,7 +510,6 @@ git stash apply #　恢复保存改动
 
 git stash list # 查看stash列表
 
-    1
 
 找到自己想恢复的那个
 
@@ -521,7 +518,6 @@ git stash list # 查看stash列表
 
 git stash apply stash@{1}
 
-    1
 
 就是这样，按自己需要恢复即可！
 10.分支重命名
