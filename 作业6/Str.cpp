@@ -31,7 +31,7 @@
  * @email: 1700695611@qq.com
  * @Date: 2020-10-01 22:59:48
  * @LastEditors: Yueyang
- * @LastEditTime: 2020-10-06 15:01:30
+ * @LastEditTime: 2020-10-08 01:00:22
  */
 #include "Str.h"
 #include <stack>
@@ -63,11 +63,11 @@ bool if_rotate(Str s)
 
 int main()
 {
-    // Str s1 =Str((char*)"abcabcdabcdeabcdefabcdefg");
-    // Str s2 =Str((char*)"aaabc");
-    // std::cout << Str::BF(s1,s2) << std::endl;
-    // std::cout << Str::KMP1(s1,s2)<<std::endl;
-    // std::cout << Str::KMP0(s1,s2)<<std::endl;
+    Str s1 =Str((char*)"abcabcdabcdeabcdeabaabaabfabcdefg");
+    Str s2 =Str((char*)"abaabaab");
+    std::cout << Str::BF(s1,s2) << std::endl;
+    std::cout << Str::KMP1(s1,s2)<<std::endl;
+    std::cout << Str::KMP0(s1,s2)<<std::endl;
 
 
     Str s =Str((char*)"abcd@dcba");

@@ -32,7 +32,7 @@
  * @email: 1700695611@qq.com
  * @Date: 2020-10-01 22:59:48
  * @LastEditors: Yueyang
- * @LastEditTime: 2020-10-06 13:15:06
+ * @LastEditTime: 2020-10-08 00:41:08
  */
 #include <iostream>
 
@@ -86,41 +86,42 @@ public:
     }
 
 
-    static inline void get_next(int* nextval,Str& t)
+    static inline void get_next(int* next,Str& t)
     {
         int j=0,k=-1;
-        nextval[0]=-1;
+        next[0]=-1;
         while(j<t.length-1)
         {
             if(k == -1 || t.data[j] == t.data[k])
             {
                 j++;k++;
-                nextval[j] = k;
+                next[j] = k;
             }
-            else k = nextval[k];//此语句是这段代码最反人类的地方，如果你一下子就能看懂，那么请允许我称呼你一声大神！
+            else k = next[k];//此语句是这段代码最反人类的地方，如果你一下子就能看懂，那么请允许我称呼你一声大神！
         }   
         for(int i=0;i<t.length;i++)
-            std::cout << "next:" <<std::dec<<nextval[i]<< std::endl;
+            std::cout << "next:" <<std::dec<<next[i]<< std::endl;
     }
 
 
     static inline void cal_next(int* nextval,Str& t)
     {
+        int j=0,k=-1;
+        
         nextval[0] = -1;//next[0]初始化为-1，-1表示不存在相同的最大前缀和最大后缀
-        int k = -1;//k初始化为-1
-        for (int q = 1; q <= t.length-1; q++)
-        {
-            while (k > -1 && t.data[k + 1] != t.data[q])//如果下一个不同，那么k就变成next[k]，注意next[k]是小于k的，无论k取任何值。
-            {
-                k = nextval[k];//往前回溯
-            }
-            if (t.data[k + 1] ==t.data[q])//如果相同，k++
-            {
-                k = k + 1;
-            }
-            nextval[q] = k;//这个是把算的k的值（就是相同的最大前缀和最大后缀长）赋给next[q]
-        }
 
+        while(j<t.length){
+            if(k == -1 || t.data[j] == t.data[k])
+            {
+                j++;k++;
+                if(t.data[j]!=t.data[k])
+                nextval[j] = k;
+                else
+                    nextval[j]=nextval[k];
+                
+            }
+            else k = nextval[k];//此语句是这段代码最反人类的地方，如果你一下子就能看懂，那么请允许我称呼你一声大神！
+        }
         for(int i=0;i<t.length;i++)
             std::cout << "next:" <<std::dec<<nextval[i]<< std::endl;
     }
@@ -129,8 +130,8 @@ public:
     static int KMP0(Str& s,Str& t)
     {
         int i=0,j=0;
-        int nextval[MAX_SIZE];
-        get_next(nextval,t);
+        int next[MAX_SIZE];
+        get_next(next,t);
         while(i<s.length&&j<t.length)
         {
             if(j==-1 || s.data[i]==t.data[j])
@@ -138,7 +139,7 @@ public:
                 i++;
                 j++;
             }
-            else j=nextval[j];               //j回退。。。
+            else j=next[j];               //j回退。。。
         }
         if(j>=t.length)
             return (i-t.length);         //匹配成功，返回子串的位置
